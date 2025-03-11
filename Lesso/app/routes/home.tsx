@@ -1,3 +1,4 @@
+import Logo from "~/components/logo";
 import type { Route } from "./+types/home";
 
 export function meta({}: Route.MetaArgs) {
@@ -8,5 +9,5 @@ export function meta({}: Route.MetaArgs) {
 }
 
 export default function Home() {
-  return <h1>Hello World</h1>;
+  return <Logo />;
 }
