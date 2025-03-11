@@ -8,16 +8,5 @@ export function meta({}: Route.MetaArgs) {
 }
 
 export default function Home() {
-  return (
-    <div style={{ 
-      backgroundImage: 'url(/app/assets/background.jpg)', 
-      backgroundSize: 'cover', 
-      backgroundPosition: 'center', 
-      backgroundRepeat: 'no-repeat',
-      height: '100vh',
-      width: '100vw', 
-    }}>
-      <h1>Hello World</h1>
-    </div>
-  );
+  return <h1>Hello World</h1>;
 }
