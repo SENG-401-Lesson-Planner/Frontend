@@ -3,7 +3,7 @@
 After cloning this repo to your local machine run the following commands to download required dependencies
 
 ```bash
-cd .\Frontend\BrainBoard\
+cd .\Frontend\Lesso\
 npm i
 ```
 
