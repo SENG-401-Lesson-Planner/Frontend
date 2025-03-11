@@ -7,18 +7,28 @@
 
 html,
 body {
-  @apply bg-white dark:bg-gray-950;
-
-  @media (prefers-color-scheme: dark) {
-    color-scheme: dark;
-  }
-}
-
-body {
   background-image: url('/app/assets/background.webp');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
   min-height: 100vh;
   margin: 0;
+}
+
+.loginbutton {
+  background-color: rgba(0, 0, 0, 0.55); 
+  color: white; 
+  padding: 5px 20px;
+  border: none;
+  border-radius: 7px;
+  cursor: pointer;
+  font-size: 20px;
+  transition: background-color 0.3s;
+  width: 150px;
+}
+
+@media (max-width: 600px) {
+  .loginbutton {
+    width: 100px;
+  }
 }
