@@ -6,8 +6,13 @@ interface LogoProps {
 }
 
 const Logo: React.FC<LogoProps> = ({ className }) => {
+
+    const handleClick = () => {
+        window.location.href = '/';
+    };
+
     return (
-        <div className={className}>
+        <div className={className} onClick={handleClick}>
             <img src={logo} alt="Logo" width={150} height={150} />
         </div>
     );
