@@ -1,4 +1,4 @@
-import Logo from "~/components/logo";
+import SideBoarder from "~/components/side-boarder";
 import LoginButton from "~/components/login-button";
 import type { Route } from "./+types/home";
 
@@ -12,11 +12,11 @@ export function meta({}: Route.MetaArgs) {
 export default function Home() {
   return (
   <div>
-    <div>
-      <Logo />
+    <div style={{ position: "absolute", top: 10, right: 10 }}>
+      <LoginButton />
     </div>
     <div>
-      <LoginButton />
+      <SideBoarder />
     </div>
   </div>
   )
