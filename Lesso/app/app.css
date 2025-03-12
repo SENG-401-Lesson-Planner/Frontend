@@ -13,6 +13,7 @@ body {
   background-repeat: no-repeat;
   min-height: 100vh;
   margin: 0;
+  font-family: 'Orelega One', cursive; 
 }
 
 .loginbutton {
