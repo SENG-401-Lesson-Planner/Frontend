@@ -30,12 +30,12 @@ export default function Home() {
       }
       .img1 {
         top: 35%;
-        left: 50%;
+        left: 55%;
         transform: translate(-50%, -50%);
       }
       .img2 {
         top: 65%;
-        left: 70%;
+        left: 75%;
         transform: translate(-50%, -50%);
       }
       @media (max-width: 640px) {

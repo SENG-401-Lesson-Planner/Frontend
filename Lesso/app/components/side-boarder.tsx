@@ -3,7 +3,7 @@ import Logo from "./logo";
 
 const SideBoarder: React.FC = () => {
     return (
-        <div className="fixed left-0 top-0 h-full w-full sm:w-1/4 flex flex-col items-center p-4 sm:p-6 shadow-xl text-white" style={{ backgroundColor: 'rgba(0, 0, 0, 0.5)' }}>
+        <div className="fixed left-0 top-0 h-full w-full sm:w-1/3 flex flex-col items-center p-4 sm:p-6 shadow-xl text-white" style={{ backgroundColor: 'rgba(0, 0, 0, 0.5)' }}>
             <div className="flex flex-col sm:flex-row items-center mt-4">
                 <h1 className="hidden sm:block text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold sm:mr-4">Lesso</h1>
                 <Logo className="w-24 h-24 sm:w-24 sm:h-24" />
