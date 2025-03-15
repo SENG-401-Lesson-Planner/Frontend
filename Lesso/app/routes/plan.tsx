@@ -8,7 +8,11 @@ const PlanPage: React.FC = () => {
             <div className="absolute top-0 left-0 m-4">
                 <Logo /> 
             </div>
-            <PromptForm />
+            <div className="flex justify-center items-center min-h-screen">
+                <div className="w-full max-w-lg">
+                    <PromptForm />
+                </div>
+            </div>
         </div>
     );
 };
