@@ -51,7 +51,7 @@ const PromptForm: React.FC = () => {
                 {error && <p className="text-red-500 text-sm mb-4">{error}</p>}
                 <fieldset className="mb-4">
                     <legend className="text-sm font-medium text-white mb-2">What grade is the lesson plan for?</legend>
-                    <input type="range" min="1" max="5" step="0.001" value={grade} onChange={handleGradeChange} className="w-full custom-range" />
+                    <input type="range" min="1" max="5" step="0.001" value={grade.toString()} onChange={handleGradeChange} className="w-full custom-range" style={{ accentColor: '#b35786'}} />
                     <div className="text-white mt-2 text-center">
                         {getGradeLabel(Math.round(grade))}
                     </div>
