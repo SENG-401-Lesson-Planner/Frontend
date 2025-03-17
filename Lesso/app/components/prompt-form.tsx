@@ -24,6 +24,13 @@ const PromptForm: React.FC = () => {
         setLessonPlan(event.target.value);
     };
 
+    const handleTimeChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+        const value = event.target.value;
+        if (/^\d*$/.test(value)) {
+            setTime(value);
+        }
+    };
+
     const handleSubmit = (event: React.FormEvent) => {
         event.preventDefault();
         if (!lessonPlan.trim()) {
@@ -103,13 +110,13 @@ const PromptForm: React.FC = () => {
                         />
                     </div>
                 )}
-                <label htmlFor="time" className="block text-sm font-medium text-white mb-2">Lesson Length</label>
+                <label htmlFor="time" className="block text-sm font-medium text-white mb-2">Lesson Length (Minutes)</label>
                 <input
                     type="text"
                     id="time"
                     name="time"
                     value={time}
-                    onChange={(e) => setTime(e.target.value)}
+                    onChange={handleTimeChange}
                     className="block w-full text-white p-2 border border-gray-300 rounded-md mb-4 focus:outline-none focus:ring-[#44264E] focus:border-[#44264E]"
                 />
                 <div className="flex justify-center">
