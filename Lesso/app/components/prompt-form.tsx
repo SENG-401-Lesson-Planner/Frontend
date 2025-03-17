@@ -7,6 +7,7 @@ const PromptForm: React.FC = () => {
     const [selectedSubject, setSelectedSubject] = useState('');
     const [customSubject, setCustomSubject] = useState('');
     const [showCustomInput, setShowCustomInput] = useState(false);
+    const [time, setTime] = useState('');
 
     useEffect(() => {
         document.body.style.overflow = 'hidden';
@@ -33,6 +34,7 @@ const PromptForm: React.FC = () => {
         console.log(`Lesson Plan: ${lessonPlan}`);
         console.log(`Grade Range: ${getGradeLabel(Math.round(grade))}`);
         console.log(`Selected Subject: ${selectedSubject || customSubject}`);
+        console.log(`Time of Lesson: ${time}`);
     };
 
     const getGradeLabel = (value: number) => {
@@ -54,7 +56,7 @@ const PromptForm: React.FC = () => {
                 {error && <p className="text-red-500 text-sm mb-4">{error}</p>}
                 <fieldset className="mb-2">
                     <legend className="text-sm font-medium text-white mb-2">What grade is the lesson plan for?</legend>
-                    <input type="range" min="1" max="13" step="0.001" value={grade.toString()} onChange={handleGradeChange} className="w-full custom-range" style={{ accentColor: '#b35786'}} />
+                    <input type="range" min="1" max="13" step="1" value={grade.toString()} onChange={handleGradeChange} className="w-full custom-range" style={{ accentColor: '#b35786'}} />
                     <div className="text-white mt-2 text-center">
                         {getGradeLabel(Math.round(grade))}
                     </div>
@@ -101,6 +103,15 @@ const PromptForm: React.FC = () => {
                         />
                     </div>
                 )}
+                <label htmlFor="time" className="block text-sm font-medium text-white mb-2">Lesson Length</label>
+                <input
+                    type="text"
+                    id="time"
+                    name="time"
+                    value={time}
+                    onChange={(e) => setTime(e.target.value)}
+                    className="block w-full text-white p-2 border border-gray-300 rounded-md mb-4 focus:outline-none focus:ring-[#44264E] focus:border-[#44264E]"
+                />
                 <div className="flex justify-center">
                     <button type="submit" className="px-4 py-2 text-c bg-white text-[#44264E] rounded-md hover:bg-[#44264E] hover:text-white">Get Lesson Plan</button>
                 </div>
