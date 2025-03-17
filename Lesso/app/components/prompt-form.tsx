@@ -112,7 +112,7 @@ const PromptForm: React.FC = () => {
                 )}
                 <label htmlFor="time" className="block text-sm font-medium text-white mb-2">Lesson Length (Minutes)</label>
                 <input
-                    type="text"
+                    type="number"
                     id="time"
                     name="time"
                     value={time}
