@@ -75,10 +75,15 @@ const PromptForm: React.FC = () => {
                             <button
                                 type="button"
                                 className={`w-full px-4 py-2 rounded-md ${selectedSubject === subject ? 'bg-[#44264E] text-[#b35786]' : 'bg-[#b35786] text-[#44264E]'} hover:bg-[#44264E] hover:text-white`}
+                                style={{ userSelect: 'none' }}
                                 onClick={() => {
-                                    setSelectedSubject(subject);
-                                    setCustomSubject('');
-                                    setShowCustomInput(false);
+                                    if (selectedSubject === subject) {
+                                        setSelectedSubject('');
+                                    } else {
+                                        setSelectedSubject(subject);
+                                        setCustomSubject('');
+                                        setShowCustomInput(false);
+                                    }
                                 }}
                             >
                                 {subject}
@@ -89,9 +94,15 @@ const PromptForm: React.FC = () => {
                         <button
                             type="button"
                             className={`w-full px-4 py-2 rounded-md ${customSubject ? 'bg-[#44264E] text-[#b35786]' : 'bg-[#b35786] text-[#44264E]'} hover:bg-[#44264E] hover:text-white`}
+                            style={{ userSelect: 'none' }}
                             onClick={() => {
-                                setShowCustomInput(true);
-                                setSelectedSubject('');
+                                if (showCustomInput) {
+                                    setShowCustomInput(false);
+                                    setCustomSubject('');
+                                } else {
+                                    setShowCustomInput(true);
+                                    setSelectedSubject('');
+                                }
                             }}
                         >
                             {customSubject || 'Other'}
