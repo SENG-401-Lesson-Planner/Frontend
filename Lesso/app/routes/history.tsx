@@ -1,10 +1,11 @@
 import React from 'react';
+import LessonPlanHistory from '../components/lesson-plan-history';
 
 export default function History() {
 
   return (
     <div>
-      <h1>History</h1>
+      < LessonPlanHistory/>
     </div>
   );
 }
