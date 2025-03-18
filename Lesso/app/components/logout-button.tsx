@@ -10,6 +10,10 @@ const LogoutButton: React.FC = () => {
         <button
             onClick={handleLogout}
             className="px-6 py-3 bg-red-500 text-white text-lg rounded hover:bg-red-600"
+            style={{
+                width: '200px', 
+                height: '50px'  
+            }}
         >
             Logout
         </button>

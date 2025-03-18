@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react';
 import SideBoarder from "~/components/side-boarder";
 import LoginButton from "~/components/login-button";
-import LogoutButton from "~/components/logout-button"; // Import LogoutButton
+import LogoutButton from "~/components/logout-button"; 
+import HistoryButton from '~/components/history-button';
 
 export default function Home() {
   const [username, setUsername] = useState<string | null>(null);
@@ -41,7 +42,9 @@ export default function Home() {
         {username ? (
           <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
             <span className="text-white" style={{ fontSize: "1.5rem" }}>{username}</span>
+            <HistoryButton />
             <LogoutButton />
+            
           </div>
         ) : (
           <LoginButton />

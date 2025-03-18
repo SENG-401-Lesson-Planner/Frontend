@@ -9,18 +9,17 @@ const LoginButton: React.FC = () => {
     return (
         <div>
             <button
-                className="loginbutton"
+                className="loginbutton text-lg"
                 style={{
-                    fontFamily: 'Orelega One, cursive',
                     zIndex: 10,
-                    padding: '10px 20px',
                     borderRadius: '5px',
                     cursor: 'pointer',
                     position: 'relative',
-                    fontSize: '16px',
                     backgroundColor: 'rgba(0, 0, 0, 0.5)',
                     color: 'white',
-                    border: 'none'
+                    border: 'none',
+                    width: '200px',
+                    height: '50px'
                 }}
                 onClick={handleLoginClick}
             >
