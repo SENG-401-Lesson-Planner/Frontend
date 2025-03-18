@@ -1,20 +1,21 @@
 import { useEffect, useState } from 'react';
 import SideBoarder from "~/components/side-boarder";
 import LoginButton from "~/components/login-button";
+import LogoutButton from "~/components/logout-button"; // Import LogoutButton
 
 export default function Home() {
-  const [username, setUsername] = useState<string | null>(null); 
+  const [username, setUsername] = useState<string | null>(null);
 
   useEffect(() => {
     const checkLoginStatus = async () => {
-      const token = localStorage.getItem('accessToken'); 
+      const token = localStorage.getItem('accessToken');
       if (token) {
         try {
           const response = await fetch('https://api.lesso.help/account/isloggedin', {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',
-              'Authentication': token, 
+              'Authentication': token,
             },
           });
 
@@ -22,9 +23,8 @@ export default function Home() {
             throw new Error('User is not logged in');
           }
 
-          
           const loggedInUsername = await response.text();
-          setUsername(loggedInUsername); 
+          setUsername(loggedInUsername);
         } catch (error) {
           console.error('Error checking login status:', error);
         }
@@ -37,9 +37,12 @@ export default function Home() {
   return (
     <div>
       <div style={{ position: "absolute", top: 10, right: 10 }}>
-        {/* Conditionally render the login button or the username */}
+        {/* Conditionally render the login button or the username with logout */}
         {username ? (
-          <span className="text-white">{username}</span>
+          <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
+            <span className="text-white">{username}</span>
+            <LogoutButton />
+          </div>
         ) : (
           <LoginButton />
         )}
