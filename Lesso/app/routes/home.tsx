@@ -40,7 +40,7 @@ export default function Home() {
         {/* Conditionally render the login button or the username with logout */}
         {username ? (
           <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
-            <span className="text-white">{username}</span>
+            <span className="text-white" style={{ fontSize: "1.5rem" }}>{username}</span>
             <LogoutButton />
           </div>
         ) : (
