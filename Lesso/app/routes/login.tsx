@@ -8,36 +8,43 @@ const LoginPage: React.FC = () => {
 
     const handleSubmit = async (event: React.FormEvent) => {
         event.preventDefault();
-        
+    
         try {
-            const response = await fetch('http://localhost:5173/login', {
+            const response = await fetch('https://api.lesso.help/account/login', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                 },
                 body: JSON.stringify({ username, password }),
+                credentials: 'include', 
             });
-
+    
             if (!response.ok) {
-                throw new Error('Login failed');
+                const errorText = await response.text();
+                throw new Error(`Login failed: ${errorText}`);
             }
-
-            // If login is successful, get the access token from the response
-            const data = await response.json();
-            const accessToken = data.access_token;
-
+    
+            
+            const accessToken = await response.text(); // Read the response as plain text
+    
             console.log('Login successful. Access token:', accessToken);
-
-            // Save the access token to localStorage
+    
+            
             localStorage.setItem('accessToken', accessToken);
-
-            // Redirect the user to a protected page or dashboard
-            window.location.href = '/dashboard';
+    
+            
+            window.location.href = '/';
         } catch (error) {
             console.error('Error during login:', error);
-            setErrorMessage('An error occurred during login');
+            if (error instanceof Error) {
+                setErrorMessage(error.message);
+            } else {
+                setErrorMessage('An unknown error occurred.');
+            }
         }
     };
+    
+    
 
     return (
         <div className="login-page flex items-center justify-center min-h-screen">
