@@ -4,12 +4,47 @@ import Logo from '../components/logo';
 const LoginPage: React.FC = () => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
+    const [errorMessage, setErrorMessage] = useState('');
 
-    const handleSubmit = (event: React.FormEvent) => {
+    const handleSubmit = async (event: React.FormEvent) => {
         event.preventDefault();
-        console.log('Usernamel:', username);
-        console.log('Password:', password);
+    
+        try {
+            const response = await fetch('https://api.lesso.help/account/login', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ username, password }),
+                credentials: 'include', 
+            });
+    
+            if (!response.ok) {
+                const errorText = await response.text();
+                throw new Error(`Login failed: ${errorText}`);
+            }
+    
+            
+            const accessToken = await response.text(); // Read the response as plain text
+    
+            console.log('Login successful. Access token:', accessToken);
+    
+            
+            localStorage.setItem('accessToken', accessToken);
+    
+            
+            window.location.href = '/';
+        } catch (error) {
+            console.error('Error during login:', error);
+            if (error instanceof Error) {
+                setErrorMessage(error.message);
+            } else {
+                setErrorMessage('An unknown error occurred.');
+            }
+        }
     };
+    
+    
 
     return (
         <div className="login-page flex items-center justify-center min-h-screen">
@@ -24,6 +59,7 @@ const LoginPage: React.FC = () => {
                         <input
                             type="username"
                             id="username"
+                            placeholder="Username"
                             value={username}
                             onChange={(e) => setUsername(e.target.value)}
                             required
@@ -35,6 +71,7 @@ const LoginPage: React.FC = () => {
                         <input
                             type="password"
                             id="password"
+                            placeholder="Password"
                             value={password}
                             onChange={(e) => setPassword(e.target.value)}
                             required
@@ -45,6 +82,7 @@ const LoginPage: React.FC = () => {
                         Login
                     </button>
                 </form>
+                {errorMessage && <p className="mt-4 text-center text-red-500">{errorMessage}</p>}
                 <div className="mt-4 text-center">
                     <a href="/register" className="text-sm text-white hover:underline">
                         Don't have an account? Register Here

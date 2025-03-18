@@ -31,6 +31,7 @@ const RegisterPage: React.FC = () => {
                         <input
                             type="username"
                             id="username"
+                            placeholder="Username"
                             value={username}
                             onChange={(e) => setUsername(e.target.value)}
                             required
@@ -42,6 +43,7 @@ const RegisterPage: React.FC = () => {
                         <input
                             type="password"
                             id="password"
+                            placeholder="Password"
                             value={password}
                             onChange={(e) => setPassword(e.target.value)}
                             required
@@ -53,6 +55,7 @@ const RegisterPage: React.FC = () => {
                         <input
                             type="password"
                             id="confirmPassword"
+                            placeholder="Password"
                             value={confirmPassword}
                             onChange={(e) => setConfirmPassword(e.target.value)}
                             required
