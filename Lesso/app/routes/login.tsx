@@ -5,6 +5,7 @@ const LoginPage: React.FC = () => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [errorMessage, setErrorMessage] = useState('');
+    const [successMessage, setSuccessMessage] = useState('');
 
     const handleSubmit = async (event: React.FormEvent) => {
         event.preventDefault();
@@ -33,7 +34,12 @@ const LoginPage: React.FC = () => {
             localStorage.setItem('accessToken', accessToken);
     
             
-            window.location.href = '/';
+            setErrorMessage(''); // Clear any previous error messages
+            setSuccessMessage('You have successfully logged in!'); // Set success message
+            
+            setTimeout(() => {
+                window.location.href = '/';
+            }, 2000); // Redirect after 2 seconds
         } catch (error) {
             console.error('Error during login:', error);
             if (error instanceof Error) {
@@ -83,6 +89,7 @@ const LoginPage: React.FC = () => {
                     </button>
                 </form>
                 {errorMessage && <p className="mt-4 text-center text-red-500">{errorMessage}</p>}
+                {successMessage && <p className="mt-4 text-center text-green-500">{successMessage}</p>}
                 <div className="mt-4 text-center">
                     <a href="/register" className="text-sm text-white hover:underline">
                         Don't have an account? Register Here

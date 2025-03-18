@@ -1,9 +1,17 @@
 import React from 'react';
 
-const LogoutButton: React.FC = () => {
+interface LogoutButtonProps {
+    onClick?: () => void;
+}
+
+const LogoutButton: React.FC<LogoutButtonProps> = ({ onClick }) => {
     const handleLogout = () => {
         localStorage.removeItem('accessToken');
-        window.location.href = '/';
+        if (onClick) {
+            onClick();
+        } else {
+            window.location.href = '/';
+        }
     };
 
     return (

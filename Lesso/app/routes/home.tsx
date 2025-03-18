@@ -6,6 +6,7 @@ import HistoryButton from '~/components/history-button';
 
 export default function Home() {
   const [username, setUsername] = useState<string | null>(null);
+  const [logoutMessage, setLogoutMessage] = useState<string | null>(null);
 
   useEffect(() => {
     const checkLoginStatus = async () => {
@@ -35,16 +36,37 @@ export default function Home() {
     checkLoginStatus();
   }, []);
 
+  const handleLogout = () => {
+    localStorage.removeItem('accessToken');
+    setUsername(null);
+    setLogoutMessage('You have successfully logged out.');
+    setTimeout(() => setLogoutMessage(null), 3000); // Clear message after 3 seconds
+  };
+
   return (
     <div>
+      {logoutMessage && (
+        <div style={{ 
+          position: "absolute", 
+          top: 0, 
+          left: "50%", 
+          transform: "translateX(-50%)", 
+          width: "30%", 
+          backgroundColor: "red", 
+          color: "white", 
+          textAlign: "center", 
+          padding: "10px" 
+        }}>
+          {logoutMessage}
+        </div>
+      )}
       <div style={{ position: "absolute", top: 10, right: 10 }}>
         {/* Conditionally render the login button or the username with logout */}
         {username ? (
           <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
             <span className="text-white" style={{ fontSize: "1.5rem" }}>{username}</span>
             <HistoryButton />
-            <LogoutButton />
-            
+            <LogoutButton onClick={handleLogout} />
           </div>
         ) : (
           <LoginButton />
