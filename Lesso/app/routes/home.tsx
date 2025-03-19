@@ -44,6 +44,10 @@ export default function Home() {
     setLogoutMessage('You have successfully logged out.');
     setTimeout(() => setLogoutMessage(null), 3000); // Clear message after 3 seconds
   };
+  
+  useEffect(() => {
+    document.title = 'Home';
+  }, []);
 
   return (
     <div>

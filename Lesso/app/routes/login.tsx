@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Logo from '../components/logo'; 
 
 const LoginPage: React.FC = () => {
@@ -7,6 +7,10 @@ const LoginPage: React.FC = () => {
     const [errorMessage, setErrorMessage] = useState('');
     const [successMessage, setSuccessMessage] = useState('');
 
+    useEffect(() => {
+        document.title = 'Login Page';
+    }, []);
+    
     const handleSubmit = async (event: React.FormEvent) => {
         event.preventDefault();
     
