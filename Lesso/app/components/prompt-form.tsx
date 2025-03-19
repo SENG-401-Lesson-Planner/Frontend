@@ -21,14 +21,14 @@ const PromptForm: React.FC = () => {
         setError('');
         setLessonPlanResponse('');
         setSubmitted(true);
-
+    
         const requestBody = {
             message: lessonPlan,
             GradeLevelPrompt: getGradeLabel(Math.round(grade)),
             SubjectPrompt: selectedSubject || customSubject,
             LessonLength: time,
         };
-
+    
         try {
             const response = await fetch('https://api.lesso.help/LLM/chat', {
                 method: 'POST',
@@ -37,27 +37,57 @@ const PromptForm: React.FC = () => {
                 },
                 body: JSON.stringify(requestBody),
             });
-
+    
             if (!response.ok) {
                 throw new Error(`Error: ${response.statusText}`);
             }
-
+    
             const reader = response.body?.getReader();
             const decoder = new TextDecoder();
             let done = false;
-
+            let fullResponse = ''; 
+    
             while (!done) {
                 const { value, done: readerDone } = await reader!.read();
                 done = readerDone;
                 const chunk = decoder.decode(value, { stream: true });
-
+                fullResponse += chunk; 
                 setLessonPlanResponse((prev) => prev + chunk);
             }
+    
+            
+            const accessToken = localStorage.getItem('accessToken');
+            if (accessToken) {
+                try {
+                    const dbResponse = await fetch('https://api.lesso.help/account/addresponse', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'Authentication': accessToken, 
+                        },
+                        body: JSON.stringify({
+                            response: fullResponse, 
+                        }),
+                    });
+        
+                    if (dbResponse.ok) {
+                        console.log('Response added to the database successfully');
+                    } else {
+                        console.error('Failed to add response to the database');
+                    }
+                } catch (dbError) {
+                    console.error('Error adding response to the database:', dbError);
+                }
+            } else {
+                console.error('No authentication token found');
+            }
+    
         } catch (error) {
             console.error('Error fetching lesson plan:', error);
             setError('Failed to get lesson plan. Please try again.');
         }
     };
+    
 
     const getGradeLabel = (value: number) => {
         return value >= 1 && value <= 12 ? value.toString() : value === 13 ? 'Post Secondary' : '';
