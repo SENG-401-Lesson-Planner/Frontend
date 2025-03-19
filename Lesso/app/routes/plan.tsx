@@ -44,6 +44,10 @@ const PlanPage: React.FC = () => {
         setTimeout(() => setLogoutMessage(null), 3000); // Clear message after 3 seconds
     };
 
+    useEffect(() => {
+            document.title = 'Plan Now!';
+        }, []);
+        
     return (
         <div>
             {logoutMessage && (
