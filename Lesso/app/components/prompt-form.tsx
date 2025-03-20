@@ -41,7 +41,11 @@ const PromptForm: React.FC = () => {
             if (!response.ok) {
                 throw new Error(`Error: ${response.statusText}`);
             }
-    
+
+            if (response.status !== 200) {
+                throw new Error(`Error: ${response.statusText}`);
+            }
+
             const reader = response.body?.getReader();
             const decoder = new TextDecoder();
             let done = false;

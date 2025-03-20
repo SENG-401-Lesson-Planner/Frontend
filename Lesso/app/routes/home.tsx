@@ -3,6 +3,8 @@ import SideBoarder from "~/components/side-boarder";
 import LoginButton from "~/components/login-button";
 import LogoutButton from "~/components/logout-button"; 
 import HistoryButton from '~/components/history-button';
+import Figure1 from '../assets/backgroundfigurines1.png';
+import Figure2 from '../assets/backgroundfigurines2.png';
 
 export default function Home() {
   const [username, setUsername] = useState<string | null>(null);
@@ -80,8 +82,8 @@ export default function Home() {
         <SideBoarder />
       </div>
       <div>
-        <img src="app/assets/backgroundfigurines2.png" alt="Background Figurine 2" className="responsive-img img1" />
-        <img src="app/assets/backgroundfigurines1.png" alt="Background Figurine 1" className="responsive-img img2" />
+        <img src={Figure2} alt="Background Figurine 2" className="responsive-img img1" />
+        <img src={Figure1} alt="Background Figurine 1" className="responsive-img img2" />
       </div>
       <style>{`
         .responsive-img {
