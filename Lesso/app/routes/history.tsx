@@ -35,6 +35,10 @@ export default function History() {
     checkLoginStatus();
   }, []);
 
+  useEffect(() => {
+    document.title = 'Plan History';
+  }, []);
+
   const handleLogout = () => {
     localStorage.removeItem('accessToken');
     setUsername(null);
