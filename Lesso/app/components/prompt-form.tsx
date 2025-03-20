@@ -157,7 +157,7 @@ const PromptForm: React.FC = () => {
                                 <button
                                     key={index}
                                     type="button"
-                                    className={`w-1/4 px-4 py-2 rounded-md ${selectedSubject === subject ? 'bg-[#44264E] text-[#b35786]' : 'bg-[#b35786] text-[#44264E]'} hover:bg-[#44264E] hover:text-white`}
+                                    className={`w-1/4 px-4 py-2 rounded-md text-center flex items-center justify-center ${selectedSubject === subject ? 'bg-[#44264E] text-[#b35786]' : 'bg-[#b35786] text-[#44264E]'} hover:bg-[#44264E] hover:text-white`}
                                     onClick={() => {
                                         setSelectedSubject(selectedSubject === subject ? '' : subject);
                                         setCustomSubject('');
@@ -169,7 +169,7 @@ const PromptForm: React.FC = () => {
                             ))}
                             <button
                                 type="button"
-                                className={`w-1/4 px-4 py-2 rounded-md ${customSubject ? 'bg-[#44264E] text-[#b35786]' : 'bg-[#b35786] text-[#44264E]'} hover:bg-[#44264E] hover:text-white`}
+                                className={`w-1/4 px-4 py-2 rounded-md text-center flex items-center justify-center ${customSubject ? 'bg-[#44264E] text-[#b35786]' : 'bg-[#b35786] text-[#44264E]'} hover:bg-[#44264E] hover:text-white`}
                                 onClick={() => {
                                     setShowCustomInput(!showCustomInput);
                                     setSelectedSubject('');
