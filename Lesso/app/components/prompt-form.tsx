@@ -1,7 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { marked } from "marked";
 
-const PromptForm: React.FC = () => {
+interface PromptFormProps {
+  onResponsePrinted: () => void;
+}
+
+const PromptForm: React.FC<PromptFormProps> = ({ onResponsePrinted }) => {
   const [grade, setGrade] = useState(1);
   const [lessonPlan, setLessonPlan] = useState("");
   const [error, setError] = useState("");
@@ -11,6 +15,13 @@ const PromptForm: React.FC = () => {
   const [time, setTime] = useState("");
   const [lessonPlanResponse, setLessonPlanResponse] = useState("");
   const [submitted, setSubmitted] = useState(false);
+
+  useEffect(() => {
+    if (lessonPlanResponse) {
+      // Once the response is printed, notify the parent component
+      onResponsePrinted();
+    }
+  }, [lessonPlanResponse, onResponsePrinted]);
 
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();

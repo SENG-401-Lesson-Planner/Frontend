@@ -8,6 +8,7 @@ import HistoryButton from "~/components/history-button";
 const PlanPage: React.FC = () => {
   const [username, setUsername] = useState<string | null>(null);
   const [logoutMessage, setLogoutMessage] = useState<string | null>(null);
+  const [responsePrinted, setResponsePrinted] = useState<boolean>(false);
 
   useEffect(() => {
     const checkLoginStatus = async () => {
@@ -44,7 +45,15 @@ const PlanPage: React.FC = () => {
     localStorage.removeItem("accessToken");
     setUsername(null);
     setLogoutMessage("You have successfully logged out.");
-    setTimeout(() => setLogoutMessage(null), 3000); // Clear message after 3 seconds
+    setTimeout(() => setLogoutMessage(null), 3000);
+  };
+
+  const handleCreateAnother = () => {
+    window.location.reload();
+  };
+
+  const handleResponsePrinted = () => {
+    setResponsePrinted(true);
   };
 
   useEffect(() => {
@@ -70,17 +79,25 @@ const PlanPage: React.FC = () => {
           {logoutMessage}
         </div>
       )}
-      <div style={{ position: "absolute", top: 10, right: 10, padding: 10 }}>
+      <div
+        className="absolute top-0 right-0 p-4 flex flex-col items-end gap-2 sm:gap-3"
+        style={{ zIndex: 10 }}
+      >
         {username ? (
-          <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
-            <span className="text-white" style={{ fontSize: "1.3rem" }}>
+          <div className="flex flex-col sm:flex-row items-center gap-1 sm:gap-3">
+            <span className="text-white text-lg sm:text-xl md:text-2xl font-semibold sm:mb-2 md:mb-0">
               {username}
             </span>
-            <HistoryButton />
-            <LogoutButton onClick={handleLogout} />
+            <div className="flex items-center gap-2 sm:gap-3">
+              <HistoryButton className="responsive-button" />
+              <LogoutButton
+                onClick={handleLogout}
+                className="responsive-button hover:text-white"
+              />
+            </div>
           </div>
         ) : (
-          <LoginButton />
+          <LoginButton className="responsive-button login-button" />
         )}
       </div>
       <div className="absolute top-0 left-0 m-4">
@@ -88,9 +105,93 @@ const PlanPage: React.FC = () => {
       </div>
       <div className="flex justify-center items-center min-h-screen">
         <div className="w-full max-w-lg">
-          <PromptForm />
+          <PromptForm onResponsePrinted={handleResponsePrinted} />
         </div>
       </div>
+
+      {/* Create Another Button */}
+      {responsePrinted && (
+        <div
+          className="flex justify-center mt-4"
+          style={{
+            position: "absolute",
+            bottom: "20px",
+            width: "100%",
+          }}
+        >
+          <button
+            onClick={handleCreateAnother}
+            className="responsive-button"
+            style={{
+              backgroundColor: "white",
+              color: "#44264E",
+              borderRadius: "5px",
+              padding: "10px 20px",
+              fontSize: "16px",
+              cursor: "pointer",
+              border: "none",
+              textAlign: "center",
+            }}
+          >
+            Create Another
+          </button>
+        </div>
+      )}
+
+      <style>{`
+        .responsive-button {
+          width: auto;
+          min-width: 90px;
+          height: 40px;
+          padding: 5px 10px;
+          font-size: 14px;
+        }
+        .login-button {
+          transition: all 0.3s ease;
+        }
+        @media (max-width: 640px) {
+          .responsive-button {
+            min-width: 80px;
+            height: 35px;
+            font-size: 12px;
+          }
+          .login-button {
+            min-width: 120px;
+            height: 50px;
+            font-size: 16px;
+            padding: 10px 20px;
+          }
+        }
+        @media (max-width: 480px) {
+          .responsive-button {
+            min-width: 70px;
+            height: 30px;
+            font-size: 14px;
+          }
+          .login-button {
+            min-width: 140px;
+            height: 45px;
+            font-size: 18px;
+            padding: 12px 24px;
+          }
+        }
+        @media (min-width: 768px) {
+          .login-button {
+            min-width: 150px;
+            height: 55px;
+            font-size: 18px;
+            padding: 12px 24px;
+          }
+        }
+        @media (min-width: 1024px) {
+          .login-button {
+            min-width: 160px;
+            height: 60px;
+            font-size: 20px;
+            padding: 15px 30px;
+          }
+        }
+      `}</style>
     </div>
   );
 };

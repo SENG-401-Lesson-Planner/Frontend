@@ -19,7 +19,7 @@ const SideBoarder: React.FC = () => {
           </h1>
 
           {/* Logo */}
-          <Logo className="w-32 h-32 sm:w-36 sm:h-36 md:h-35 md:w-35 lg:w-50 lg:h-50 sm:mb-0 mb-6 sm:absolute sm:top-4 sm:left-4 sm:static" />
+          <Logo className="w-32 h-32 sm:w-36 sm:h-36 md:h-35 md:w-35 lg:w-50 lg:h-50 sm:mb-0 mb-6 sm:absolute sm:top-4 sm:left-4" />
         </div>
         <p className="mt-20 text-base sm:text-lg md:text-2xl lg:text-3xl text-center">
           Smarter & Faster Planning with AI-Powered Prompts.
