@@ -70,10 +70,10 @@ const PlanPage: React.FC = () => {
           {logoutMessage}
         </div>
       )}
-      <div style={{ position: "absolute", top: 10, right: 10 }}>
+      <div style={{ position: "absolute", top: 10, right: 10, padding: 10 }}>
         {username ? (
           <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
-            <span className="text-white" style={{ fontSize: "1.5rem" }}>
+            <span className="text-white" style={{ fontSize: "1.3rem" }}>
               {username}
             </span>
             <HistoryButton />
@@ -84,7 +84,7 @@ const PlanPage: React.FC = () => {
         )}
       </div>
       <div className="absolute top-0 left-0 m-4">
-        <Logo className="w-30 h-30 sm:w-30 sm:h-30 md:w-35 md:h-35" />
+        <Logo className="w-25 h-25 sm:w-30 sm:h-30 md:w-35 md:h-35" />
       </div>
       <div className="flex justify-center items-center min-h-screen">
         <div className="w-full max-w-lg">

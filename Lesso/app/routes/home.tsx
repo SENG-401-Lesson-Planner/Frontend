@@ -134,10 +134,10 @@ export default function Home() {
             width: 60%; /* Further reduced width for very small screens */
           }
           .img1 {
-            top: 50%;
+            top: 55%;
           }
           .img2 {
-            top: 75%;
+            top: 80%;
           }
         }
         @media (max-height: 780px) {
