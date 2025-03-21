@@ -14,10 +14,9 @@ const SideBoarder: React.FC = () => {
       <div className="w-full h-full flex flex-col items-center p-12 sm:p-6">
         <div className="flex flex-col sm:flex-row sm:items-center sm:justify-start sm:mt-4 mt-0 sm:pl-4">
           {/* Lesso Text */}
-          <h1 className="hidden sm:block text-2xl sm:text-3xl md:text-4xl lg:text-6xl font-bold mb-4 sm:mr-4">
+          <h1 className="hidden sm:block text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-4 sm:mr-4">
             Lesso
           </h1>
-
           {/* Logo */}
           <Logo className="w-32 h-32 sm:w-36 sm:h-36 md:h-35 md:w-35 lg:w-50 lg:h-50 sm:mb-0 mb-6 sm:absolute sm:top-4 sm:left-4" />
         </div>

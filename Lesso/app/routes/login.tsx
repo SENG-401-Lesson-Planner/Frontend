@@ -54,7 +54,7 @@ const LoginPage: React.FC = () => {
   return (
     <div className="login-page flex items-center justify-center min-h-screen">
       <div className="absolute top-0 w-full flex justify-center sm:left-0 sm:w-auto sm:justify-start m-4">
-        <Logo className="w-40 h-40 sm:w-40 sm:h-40 md:w-45 md:h-45" />
+        <Logo className="w-35 h-35 sm:w-40 sm:h-40 md:w-45 md:h-45" />
       </div>
       <div
         className="p-8 rounded shadow-md w-full max-w-md"
