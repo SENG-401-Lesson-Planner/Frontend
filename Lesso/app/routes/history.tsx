@@ -56,21 +56,18 @@ export default function History() {
         <Logo className="w-25 h-25 sm:w-24 sm:h-24 md:w-32 md:h-32 flex-shrink-0" />
 
         {/* User Info and Buttons */}
-        <div className="flex items-center gap-2 sm:gap-3 overflow-x-auto">
+        <div className="flex flex-col items-center gap-1 sm:gap-2 md:gap-3 mt-[-8px]">
           {username && (
-            <span
-              className="text-white sm:text-lg"
-              style={{ fontSize: "1.3rem" }}
-            >
+            <span className="text-white text-lg sm:text-xl md:text-2xl font-semibold">
               {username}
             </span>
           )}
           <div className="flex items-center gap-2 sm:gap-3">
-            <PromptButton className="w-auto min-w-[110px] h-12 px-4 py-2 text-sm sm:text-lg md:text-xl" />
+            <PromptButton className="w-auto min-w-[90px] sm:min-w-[110px] h-10 sm:h-12 px-3 sm:px-4 py-1 sm:py-2 text-sm sm:text-lg md:text-xl" />
             {username && (
               <LogoutButton
                 onClick={handleLogout}
-                className="w-auto min-w-[110px] h-12 px-4 py-2 text-sm sm:text-lg md:text-xl"
+                className="w-auto min-w-[90px] sm:min-w-[110px] h-10 sm:h-12 px-3 sm:px-4 py-1 sm:py-2 text-sm sm:text-lg md:text-xl"
               />
             )}
           </div>
