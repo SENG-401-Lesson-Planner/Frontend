@@ -13,7 +13,7 @@ const Logo: React.FC<LogoProps> = ({ className }) => {
 
     return (
         <div className={className} onClick={handleClick}>
-            <img src={logo} alt="Logo" width={150} height={150} style={{ cursor: 'pointer' }}/>
+            <img src={logo} alt="Logo" style={{ cursor: 'pointer' }}/>
         </div>
     );
 };

@@ -75,7 +75,7 @@ export default function Home() {
             <LogoutButton onClick={handleLogout} />
           </div>
         ) : (
-          <LoginButton />
+          <LoginButton className="responsive-button" />
         )}
       </div>
       <div>
@@ -87,7 +87,7 @@ export default function Home() {
       </div>
       <style>{`
         .responsive-img {
-          position: absolute;
+          position: fixed; /* Changed from absolute to fixed */
           width: 30%;
           height: auto;
         }
@@ -103,7 +103,7 @@ export default function Home() {
         }
         @media (max-width: 640px) {
           .responsive-img {
-            width: 50%;
+            width: 40%; /* Reduced width for smaller screens */
           }
           .img1 {
             top: 50%;
@@ -116,13 +116,21 @@ export default function Home() {
         }
         @media (max-width: 480px) {
           .responsive-img {
-            width: 70%;
+            width: 60%; /* Further reduced width for very small screens */
           }
           .img1 {
             top: 50%;
           }
           .img2 {
             top: 75%;
+          }
+        }
+        @media (max-height: 780px) {
+          .img1 {
+            top: 55%; 
+          }
+          .img2 {
+            top: 75%; 
           }
         }
       `}</style>
