@@ -58,8 +58,8 @@ const LoginPage: React.FC = () => {
 
     return (
         <div className="login-page flex items-center justify-center min-h-screen">
-            <div className="absolute top-0 left-0 m-4">
-                <Logo /> 
+            <div className="absolute top-0 w-full flex justify-center sm:left-0 sm:w-auto sm:justify-start m-4">
+                <Logo className="w-40 h-40 sm:w-40 sm:h-40 md:w-50 md:h-50" /> 
             </div>
             <div className="p-8 rounded shadow-md w-full max-w-md" style={{ backgroundColor: 'rgba(0, 0, 0, 0.5)' }}>
                 <h1 className="text-2xl text-white font-bold mb-6">Login</h1>
