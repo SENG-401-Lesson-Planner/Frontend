@@ -14,6 +14,7 @@ const HistoryButton: React.FC<HistoryButtonProps> = ({ className }) => {
     <div>
       <button
         className={`history-button text-lg bg-white rounded text-[#44264E] hover:bg-[#44264E] hover:text-white ${className}`}
+        id="history-button"
         onClick={navigateToHistory}
       >
         All Lesson Plans
