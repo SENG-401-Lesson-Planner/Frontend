@@ -51,11 +51,13 @@ const RegisterPage: React.FC = () => {
 
   return (
     <div className="register-page flex items-center justify-center min-h-screen">
-      <div className="absolute top-0 left-0 m-4">
+      <div className="absolute top-0 w-full flex justify-center sm:left-0 sm:w-auto sm:justify-start m-4">
         <Logo className="w-40 h-40 sm:w-40 sm:h-40 md:w-45 md:h-45" />
       </div>
+
+      {/* Registration Form */}
       <div
-        className="p-8 rounded shadow-md w-full max-w-md"
+        className="p-8 rounded shadow-md w-full max-w-md mt-12 sm:mt-0"
         style={{ backgroundColor: "rgba(0, 0, 0, 0.5)" }}
       >
         <h1 className="text-2xl text-white font-bold mb-6">Register</h1>
@@ -122,8 +124,13 @@ const RegisterPage: React.FC = () => {
           </button>
         </form>
         {successMessage && (
-          <p className="text-green-500 text-sm mt-2">{successMessage}</p>
+          <p className="mt-4 text-center text-green-500">{successMessage}</p>
         )}
+        <div className="mt-4 text-center">
+          <a href="/login" className="text-sm text-white hover:underline">
+            Already have an account? Login Here
+          </a>
+        </div>
       </div>
     </div>
   );
