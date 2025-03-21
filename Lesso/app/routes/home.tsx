@@ -71,11 +71,11 @@ export default function Home() {
           {logoutMessage}
         </div>
       )}
-      <div style={{ position: "absolute", top: 10, right: 10 }}>
+      <div style={{ position: "absolute", top: 10, right: 10, zIndex: 10 }}>
         {/* Conditionally render the login button or the username with logout */}
         {username ? (
           <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
-            <span className="text-white" style={{ fontSize: "1.5rem" }}>
+            <span className="text-white" style={{ fontSize: "1.3rem" }}>
               {username}
             </span>
             <HistoryButton />
@@ -121,11 +121,11 @@ export default function Home() {
             width: 40%; /* Reduced width for smaller screens */
           }
           .img1 {
-            top: 50%;
+            top: 55%;
             left: 35%;
           }
           .img2 {
-            top: 75%;
+            top: 80%;
             left: 65%;
           }
         }

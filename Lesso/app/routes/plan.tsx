@@ -84,7 +84,7 @@ const PlanPage: React.FC = () => {
         )}
       </div>
       <div className="absolute top-0 left-0 m-4">
-        <Logo className="w-40 h-40 sm:w-40 sm:h-40 md:w-45 md:h-45" />
+        <Logo className="w-30 h-30 sm:w-30 sm:h-30 md:w-35 md:h-35" />
       </div>
       <div className="flex justify-center items-center min-h-screen">
         <div className="w-full max-w-lg">
