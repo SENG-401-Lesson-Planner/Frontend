@@ -71,20 +71,30 @@ export default function Home() {
           {logoutMessage}
         </div>
       )}
-      <div style={{ position: "absolute", top: 10, right: 10, zIndex: 10 }}>
+
+      <div
+        className="absolute top-0 right-0 p-4 flex flex-col items-end gap-2 sm:gap-3"
+        style={{ zIndex: 10 }}
+      >
         {/* Conditionally render the login button or the username with logout */}
         {username ? (
-          <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
-            <span className="text-white" style={{ fontSize: "1.3rem" }}>
+          <div className="flex flex-col sm:flex-row items-center gap-1 sm:gap-3">
+            <span className="text-white text-lg sm:text-xl md:text-2xl font-semibold sm:mb-2 md:mb-0">
               {username}
             </span>
-            <HistoryButton />
-            <LogoutButton onClick={handleLogout} />
+            <div className="flex items-center gap-2 sm:gap-3">
+              <HistoryButton className="responsive-button" />
+              <LogoutButton
+                onClick={handleLogout}
+                className="responsive-button"
+              />
+            </div>
           </div>
         ) : (
-          <LoginButton className="responsive-button" />
+          <LoginButton className="responsive-button login-button" />
         )}
       </div>
+
       <div>
         <SideBoarder />
       </div>
@@ -100,9 +110,10 @@ export default function Home() {
           className="responsive-img img2"
         />
       </div>
+
       <style>{`
         .responsive-img {
-          position: fixed; /* Changed from absolute to fixed */
+          position: fixed;
           width: 30%;
           height: auto;
         }
@@ -116,9 +127,19 @@ export default function Home() {
           left: 75%;
           transform: translate(-50%, -50%);
         }
+        .responsive-button {
+          width: auto;
+          min-width: 90px;
+          height: 40px;
+          padding: 5px 10px;
+          font-size: 14px;
+        }
+        .login-button {
+          transition: all 0.3s ease;
+        }
         @media (max-width: 640px) {
           .responsive-img {
-            width: 40%; /* Reduced width for smaller screens */
+            width: 40%;
           }
           .img1 {
             top: 55%;
@@ -128,16 +149,62 @@ export default function Home() {
             top: 80%;
             left: 65%;
           }
+          .responsive-button {
+            min-width: 80px;
+            height: 35px;
+            font-size: 12px;
+          }
+          .login-button {
+            min-width: 120px;
+            height: 50px;
+            font-size: 16px;
+            padding: 10px 20px;
+          }
+          .absolute {
+            top: 20px; 
+          }
         }
         @media (max-width: 480px) {
           .responsive-img {
-            width: 60%; /* Further reduced width for very small screens */
+            width: 60%;
           }
           .img1 {
             top: 55%;
           }
           .img2 {
             top: 80%;
+          }
+          .responsive-button {
+            min-width: 70px;
+            height: 30px;
+            font-size: 14px;
+          }
+          .login-button {
+            min-width: 140px;
+            height: 45px;
+            font-size: 18px;
+            padding: 12px 24px;
+          }
+          .absolute {
+            top: 25px; 
+          }
+        }
+        @media (min-width: 768px) {
+          /* Make the Login Button bigger on medium screens */
+          .login-button {
+            min-width: 150px;
+            height: 55px;
+            font-size: 18px;
+            padding: 12px 24px;
+          }
+        }
+        @media (min-width: 1024px) {
+          /* Make the Login Button even bigger on large screens */
+          .login-button {
+            min-width: 160px;
+            height: 60px;
+            font-size: 20px;
+            padding: 15px 30px;
           }
         }
         @media (max-height: 780px) {
