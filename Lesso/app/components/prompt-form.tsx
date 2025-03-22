@@ -45,6 +45,7 @@ const PromptForm: React.FC<PromptFormProps> = ({ onResponsePrinted }) => {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
+          "Authentication": localStorage.getItem("accessToken") || "",
         },
         body: JSON.stringify(requestBody),
       });
@@ -69,35 +70,7 @@ const PromptForm: React.FC<PromptFormProps> = ({ onResponsePrinted }) => {
         fullResponse += chunk;
         setLessonPlanResponse((prev) => prev + chunk);
       }
-
-      const accessToken = localStorage.getItem("accessToken");
-      if (accessToken) {
-        try {
-          const dbResponse = await fetch(
-            "https://api.lesso.help/account/addresponse",
-            {
-              method: "POST",
-              headers: {
-                "Content-Type": "application/json",
-                Authentication: accessToken,
-              },
-              body: JSON.stringify({
-                response: fullResponse,
-              }),
-            }
-          );
-
-          if (dbResponse.ok) {
-            console.log("Response added to the database successfully");
-          } else {
-            console.error("Failed to add response to the database");
-          }
-        } catch (dbError) {
-          console.error("Error adding response to the database:", dbError);
-        }
-      } else {
-        console.error("No authentication token found");
-      }
+      
     } catch (error) {
       console.error("Error fetching lesson plan:", error);
       setError("Failed to get lesson plan. Please try again.");
