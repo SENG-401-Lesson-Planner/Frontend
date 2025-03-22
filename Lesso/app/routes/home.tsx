@@ -166,7 +166,7 @@ export default function Home() {
         }
         @media (max-width: 480px) {
           .responsive-img {
-            width: 50%;
+            width: 45%;
           }
           .img1 {
             top: 55%;
