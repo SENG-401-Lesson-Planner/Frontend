@@ -100,7 +100,7 @@ const PlanPage: React.FC = () => {
           <LoginButton className="responsive-button login-button" />
         )}
       </div>
-      <div className="absolute top-0 left-0 m-4">
+      <div className="absolute top-0 left-0 m-4" style={{ zIndex: 10 }}>
         <Logo className="w-25 h-25 sm:w-30 sm:h-30 md:w-35 md:h-35" />
       </div>
       <div className="flex justify-center items-center min-h-screen">
